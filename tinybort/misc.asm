@@ -1,4 +1,3 @@
-db "GNR STF", 0, 0, 0, 0
 ; Input: ECX = number of frames to wait
 sleep:
     push eax
@@ -48,25 +47,6 @@ macro play_note freq, dur
     pop ecx
     pop eax
 }
-
-bootSound:
-    play_note 262, 17
-    play_note 330, 17
-    play_note 392, 17
-    play_note 523, 25
-    ret
-
-dingdong:
-    play_note 440, 3
-    play_note 220, 3
-    play_note 880, 3
-    ret
-
-dongding:
-    play_note 880, 3
-    play_note 220, 3
-    play_note 440, 3
-    ret
 regDump:
         pushad
         call vga_hex32
@@ -113,7 +93,7 @@ randNum:
     add eax, 13849
 
     and eax, 0xFFFF
-                           \
+
     mov [rSeed], ax
 
     pop ecx
@@ -210,43 +190,38 @@ dataRM: ; it's called dataRM not 'data' because FASM
    kb_caps_lock db 0
    vga_cursor_x db 0
    vga_cursor_y db 0
-   msg_exc_0  db "PANIC: Divide by Zero", 0
-   msg_exc_1  db "PANIC: Debug Exception", 0
-   msg_exc_2  db "PANIC: Non-Maskable Interrupt", 0
-   msg_exc_3  db "PANIC: Breakpoint", 0
-   msg_exc_4  db "PANIC: Overflow", 0
-   msg_exc_5  db "PANIC: Bound Range Exceeded", 0
-   msg_exc_6  db "PANIC: Invalid Opcode (Tried executing garbage)", 0
-   msg_exc_7  db "PANIC: Device Not Available", 0
-   msg_exc_8  db "PANIC: Double Fault (Something went horribly wrong)", 0
-   msg_exc_9  db "PANIC: Coprocessor Segment Overrun", 0
-   msg_exc_10 db "PANIC: Invalid TSS", 0
-   msg_exc_11 db "PANIC: Segment Not Present", 0
-   msg_exc_12 db "PANIC: Stack-Segment Fault", 0
-   msg_exc_13 db "PANIC: General Protection Fault (You touched bad memory)", 0
-   msg_exc_14 db "PANIC: Page Fault", 0
-   msg_exc_15 db "PANIC: Reserved (15)", 0
-   msg_exc_16 db "PANIC: x87 Floating-Point Exception", 0
-   msg_exc_17 db "PANIC: Alignment Check", 0
-   msg_exc_18 db "PANIC: Machine Check", 0
-   msg_exc_19 db "PANIC: SIMD Floating-Point Exception", 0
-   msg_exc_20 db "PANIC: Virtualization Exception", 0
-   msg_exc_21 db "PANIC: Control Protection Exception", 0
-   msg_exc_22 db "PANIC: Reserved (22)", 0
-   msg_exc_23 db "PANIC: Reserved (23)", 0
-   msg_exc_24 db "PANIC: Reserved (24)", 0
-   msg_exc_25 db "PANIC: Reserved (25)", 0
-   msg_exc_26 db "PANIC: Reserved (26)", 0
-   msg_exc_27 db "PANIC: Reserved (27)", 0
-   msg_exc_28 db "PANIC: Hypervisor Injection Exception", 0
-   msg_exc_29 db "PANIC: VMM Communication Exception", 0
-   msg_exc_30 db "PANIC: Security Exception", 0
-   msg_exc_31 db "PANIC: Reserved (31)", 0
-   msg_exc_unknown db "PANIC: Unknown Interrupt Received", 0
+   msg_exc_0  db "0", 0
+   msg_exc_1  db "1", 0
+   msg_exc_2  db "2", 0
+   msg_exc_3  db "3", 0
+   msg_exc_4  db "4", 0
+   msg_exc_5  db "5", 0
+   msg_exc_6  db "6", 0
+   msg_exc_7  db "7", 0
+   msg_exc_8  db "8", 0
+   msg_exc_9  db "9", 0
+   msg_exc_10 db "10", 0
+   msg_exc_11 db "11", 0
+   msg_exc_12 db "12", 0
+   msg_exc_13 db "13", 0
+   msg_exc_14 db "14", 0
+   msg_exc_15 db "15", 0
+   msg_exc_16 db "16", 0
+   msg_exc_17 db "17", 0
+   msg_exc_18 db "18", 0
+   msg_exc_19 db "19", 0
+   msg_exc_20 db "20", 0
+   msg_exc_21 db "21", 0
+   msg_exc_22 db "22", 0
+   msg_exc_23 db "23", 0
+   msg_exc_24 db "24", 0
+   msg_exc_25 db "25", 0
+   msg_exc_26 db "26", 0
+   msg_exc_27 db "27", 0
+   msg_exc_28 db "28", 0
+   msg_exc_29 db "29", 0
+   msg_exc_30 db "30", 0
+   msg_exc_31 db "31", 0
+   msg_exc_unknown db "?", 0
    msg_exc_nl db 13, 10
    vga_color db 0x0F    ; White on black default
-bort_msg_1: db "Are you talking to me?", 13, 10
-bort_msg_2: db "No, my OS is also named Bort", 13, 10
-bort_msg_3: db "Sorry, we're out of Bort license plates", 13, 10
-bort_msg_4: db "I repeat, we are sold out of Bort", 13, 10, 0, 0, 0, 0
-db "END KRN", 0, 0, 0, 0

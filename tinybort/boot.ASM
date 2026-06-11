@@ -181,10 +181,10 @@ enable_a20:
     jnz .wait_cmd
     ret
 
-msg_loading db "Borting...", 13, 10, 0
-msg_ok db "Borting completed successfully!", 13, 10, 0
-msg_fail db "Disk sad :C", 0
-msg db "386ing...", 13, 10, 0
+msg_loading db "Booting...", 13, 10, 0
+msg_ok db "Borted", 13, 10, 0
+msg_fail db "Dsk err", 0
+msg db "32ing", 13, 10, 0
 
 times 510-($-$$) db 0
 dw 0xAA55
@@ -302,9 +302,8 @@ ISR_ERRCODE   30
 ISR_NOERRCODE 31
 
 mainStart:
-include "main.asm"
-;include "exampleProg.asm"
-;include "halter.asm"
+; include your ASM file here
+jmp $ ; comment this out afterwards
 include "serial.asm"
 include "vga.asm"
 include "ps2kbd.asm"
